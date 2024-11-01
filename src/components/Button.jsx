@@ -1,10 +1,10 @@
-export default function Button({ name, ...props }) {
+export default function Button({ btnText, ...props }) {
     return (
         <button
-            className="sw-32 bg-stone-700  hover:bg-stone-600 my-2 p-2 rounded-lg font-semibold max-w-sm text-stone-200"
+            className="text-sm bg-stone-800  hover:bg-stone-700 p-2 rounded-lg text-stone-300 hover:text-white"
             {...props}
         >
-            {name}
+            {btnText}
         </button>
     );
 }
