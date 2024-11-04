@@ -2,7 +2,7 @@ import { useState } from 'react';
 import SidePanel from './components/SidePanel';
 import ProjectPage from './components/ProjectPage/ProjectPage';
 import EmptyBoard from './components/EmptyBoard';
-import NewProjectForm from './components/NewProjectForm/NewProjectForm';
+import NewProject from './components/NewProjectForm/NewProjectForm';
 
 function App() {
     console.log(`Render APP !!!`);
@@ -71,7 +71,7 @@ function App() {
     const isProjectSelected = projects.find((p) => p.selected);
 
     return (
-        <>
+        <main className="sidebar mt-8 flex gap-8 -pb-8">
             <SidePanel
                 projects={projects}
                 selectProject={selectProject}
@@ -86,7 +86,7 @@ function App() {
                 />
             )}
             {!isProjectSelected && projectStatus === 'create' && (
-                <NewProjectForm
+                <NewProject
                     submitFunc={addProject}
                     onCancel={handleCancelBtn}
                 />
@@ -94,7 +94,7 @@ function App() {
             {!isProjectSelected && projectStatus === 'empty' && (
                 <EmptyBoard createNewProject={showProjectForm} />
             )}
-        </>
+        </main>
     );
 }
 
