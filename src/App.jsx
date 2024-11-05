@@ -5,8 +5,6 @@ import EmptyBoard from './components/EmptyBoard';
 import NewProject from './components/NewProjectForm/NewProjectForm';
 
 function App() {
-    console.log(`Render APP !!!`);
-
     const [projects, setProject] = useState([
         {
             title: 'Project 1',
@@ -16,25 +14,30 @@ function App() {
             tasks: ['Create Backlog', 'Find a team', 'Release'],
         },
     ]);
-    // component status: create, edit, read, empty
+    // component status: create, edit, empty
     const [projectStatus, setProjectStatus] = useState('empty');
 
     function addProject(project) {
         setProject((projects) => {
-            return [...projects, { ...project, tasks: [], selected: false }];
+            return [
+                ...projects,
+                {
+                    ...project,
+                    tasks: [],
+                    selected: false,
+                    dueDate: new Date(project.dueDate),
+                },
+            ];
         });
         setProjectStatus('empty');
     }
 
     function updateTasks(tasks) {
-        console.log(tasks);
-
         setProject((projects) => [
             ...projects.map((p) => {
                 if (p.selected === true) {
                     p.tasks = [...tasks];
                 }
-                console.log(p.tasks);
 
                 return p;
             }),

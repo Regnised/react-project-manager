@@ -1,13 +1,11 @@
 import Button from './Button';
 
 export default function Tasks({ updateTasks, project }) {
-    console.log(`RENDER TASKS`);
-    console.log(project.tasks);
     const tasks = project.tasks;
 
     function handleAddTask(e) {
         e.preventDefault();
-        console.log(`handleAddTask`);
+
         tasks.push(e.target[0].value);
         updateTasks(tasks);
     }
@@ -19,7 +17,7 @@ export default function Tasks({ updateTasks, project }) {
 
     return (
         <>
-            <p className="font-bold text-2xl text-stone-700 mb-2">Tasks</p>
+            <h2 className="font-bold text-2xl text-stone-700 mb-2">Tasks</h2>
             <form onSubmit={handleAddTask}>
                 <input type="text" name="taskTitle" />
                 <span className="pl-4">
